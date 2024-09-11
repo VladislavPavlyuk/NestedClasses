@@ -1,11 +1,13 @@
 package nested.models;
 
-import nested.enums.Genre;
 import nested.enums.Type;
 
 public class Game {
 
-    public static Object Genre;
+    public enum Genre {
+        ACTION, SPORT, RACE
+    }
+
     private final String name;
     private final Genre genre;
     private final Type type;

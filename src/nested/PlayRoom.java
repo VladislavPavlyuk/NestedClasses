@@ -1,5 +1,5 @@
 package nested;
-import nested.enums.Brand;
+
 import nested.models.Game;
 
 import java.util.Arrays;
@@ -7,6 +7,7 @@ import java.util.Comparator;
 
 public class PlayRoom {
     public static void main(String[] args) {
+        
         Game.GameDisk[] physicalGames = {
                 Game.getDisk("Game1", Game.Genre.ACTION, "Description1"),
                 Game.getDisk("Game2", Game.Genre.SPORT, "Description2"),
@@ -36,9 +37,6 @@ public class PlayRoom {
                 return Integer.compare(a.getRating(), b.getRating());
             }
         });
-
-        // Пример использования GameConsole
-        GameConsole console = new GameConsole(Brand.SONY,"222");
-        console.loadGames(physicalGames, virtualGames);
+        
     }
 }
