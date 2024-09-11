@@ -1,5 +1,5 @@
 package nested.enums;
 
 public enum Color {
-    RED, BLUE, GREEN, BLACK, WHITE
+    RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, BLACK, WHITE
 }

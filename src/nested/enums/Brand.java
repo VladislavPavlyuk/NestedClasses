@@ -1,5 +1,5 @@
 package nested.enums;
 
 public enum Brand {
-    SONY, MICROSOFT
+    Sony,Nintendo, Microsoft,Atari,Sega,Meta,VTech,NEC
 }
