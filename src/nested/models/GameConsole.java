@@ -109,22 +109,22 @@ public class GameConsole implements IGameConsole {
 
     public void loadGame(Game game) {
         activeGame = game;
-        System.out.println("Game " + game.getName() + " is loading");
+        System.out.println("Игра " + game.getName() + " загружается");
     }
 
     public void playGame() {
         if (activeGame == null) {
-            System.out.println("No game loaded.");
+            System.out.println("Нет загруженной игры.");
             return;
         }
         checkStatus();
-        System.out.println("Playing " + activeGame.getName());
+        System.out.println("Играем в " + activeGame.getName());
         if (firstGamepad.isOn()) {
-            System.out.println("First gamepad charge: " + firstGamepad.getChargeLevel() + "%");
+            System.out.println("Заряд первого джойстика: " + firstGamepad.getChargeLevel() + "%");
             firstGamepad.decreaseBattery();
         }
         if (secondGamepad.isOn()) {
-            System.out.println("Second gamepad charge: " + secondGamepad.getChargeLevel() + "%");
+            System.out.println("Заряд второго джойстика: " + secondGamepad.getChargeLevel() + "%");
             secondGamepad.decreaseBattery();
         }
     }
