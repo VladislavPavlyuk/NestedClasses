@@ -4,7 +4,7 @@ import nested.enums.Brand;
 import nested.enums.Color;
 import nested.interfaces.Powered;
 
-class GameConsole implements Powered {
+public class GameConsole implements Powered {
     private final Brand brand;
     private final String model;
     private final String serial;
@@ -16,7 +16,7 @@ class GameConsole implements Powered {
 
     public GameConsole(Brand brand, String serial) {
         this.brand = brand;
-        this.model = "Default Model"; // Можно изменить на нужное значение
+        this.model = "Default Model"; // Can be changed to the desired value
         this.serial = serial;
         this.firstGamepad = new Gamepad(brand, serial, 1, Color.BLACK);
         this.secondGamepad = new Gamepad(brand, serial, 2, Color.WHITE);
@@ -53,33 +53,33 @@ class GameConsole implements Powered {
 
     public void loadGame(Game game) {
         activeGame = game;
-        System.out.println("Игра " + game.getName() + " загружается");
+        System.out.println("Game " + game.getName() + " is loading");
     }
 
     public void playGame() {
         if (activeGame == null) {
-            System.out.println("Нет загруженной игры.");
+            System.out.println("No game loaded.");
             return;
         }
         checkStatus();
-        System.out.println("Играем в " + activeGame.getName());
+        System.out.println("Playing " + activeGame.getName());
         if (firstGamepad.isOn()) {
-            System.out.println("Заряд первого джойстика: " + firstGamepad.getChargeLevel() + "%");
+            System.out.println("First gamepad charge: " + firstGamepad.getChargeLevel() + "%");
             firstGamepad.decreaseBattery();
         }
         if (secondGamepad.isOn()) {
-            System.out.println("Заряд второго джойстика: " + secondGamepad.getChargeLevel() + "%");
+            System.out.println("Second gamepad charge: " + secondGamepad.getChargeLevel() + "%");
             secondGamepad.decreaseBattery();
         }
     }
 
     private void checkStatus() {
         if (!firstGamepad.isOn() && !secondGamepad.isOn()) {
-            System.out.println("Подключите джойстик");
+            System.out.println("Connect a gamepad");
             waitingCounter++;
             if (waitingCounter > 5) {
                 powerOff();
-                throw new RuntimeException("Приставка завершает работу из-за отсутствия активности");
+                throw new RuntimeException("Console is shutting down due to inactivity");
             }
         } else {
             waitingCounter = 0;

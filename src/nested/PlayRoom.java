@@ -22,7 +22,7 @@ public class PlayRoom {
                 Game.getVirtualGame("Game8", Game.Genre.ACTION, 2)
         };
 
-        // Сортировка физических игр по жанру
+        // Sort physical games by genre
         Arrays.sort(physicalGames, new Comparator<Game.GameDisk>() {
             @Override
             public int compare(Game.GameDisk a, Game.GameDisk b) {
@@ -30,7 +30,7 @@ public class PlayRoom {
             }
         });
 
-        // Сортировка виртуальных игр по рейтингу
+        // Sort virtual games by rating
         Arrays.sort(virtualGames, new Comparator<Game.VirtualGame>() {
             @Override
             public int compare(Game.VirtualGame a, Game.VirtualGame b) {
