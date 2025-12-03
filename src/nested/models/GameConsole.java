@@ -2,9 +2,10 @@ package nested.models;
 
 import nested.enums.Brand;
 import nested.enums.Color;
+import nested.interfaces.IGameConsole;
 import nested.interfaces.Powered;
 
-public class GameConsole implements Powered {
+public class GameConsole implements IGameConsole {
     private final Brand brand;
     private final String model;
     private final String serial;
@@ -86,7 +87,7 @@ public class GameConsole implements Powered {
         }
     }
 
-    public class Gamepad implements Powered {
+    public class Gamepad implements nested.interfaces.IGamepad {
         private final Brand brand;
         private final String consoleSerial;
         private final int connectedNumber;

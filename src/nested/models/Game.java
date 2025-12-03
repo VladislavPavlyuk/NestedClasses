@@ -1,8 +1,9 @@
 package nested.models;
 
 import nested.enums.Type;
+import nested.interfaces.IGame;
 
-public class Game {
+public class Game implements IGame {
 
     public enum Genre {
         ACTION, SPORT, RACE
@@ -30,7 +31,7 @@ public class Game {
         return type;
     }
 
-    public static class GameDisk {
+    public static class GameDisk implements nested.interfaces.IGameDisk {
         private final String description;
         private final Game data;
 
@@ -48,7 +49,7 @@ public class Game {
         }
     }
 
-    public static class VirtualGame {
+    public static class VirtualGame implements nested.interfaces.IVirtualGame {
         private final int rating;
         private final Game data;
 
