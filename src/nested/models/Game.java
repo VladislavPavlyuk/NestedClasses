@@ -1,12 +1,15 @@
 package nested.models;
 
-import nested.enums.Type;
 import nested.interfaces.IGame;
 
 public class Game implements IGame {
 
     public enum Genre {
         ACTION, SPORT, RACE
+    }
+
+    public enum Type {
+        VIRTUAL, PHYSICAL
     }
 
     private final String name;
@@ -37,7 +40,7 @@ public class Game implements IGame {
 
         private GameDisk(String name, Genre genre, String description) {
             this.description = description;
-            this.data = new Game(name, genre, Type.PHYSICAL);
+            this.data = new Game(name, genre, Game.Type.PHYSICAL);
         }
 
         public String getDescription() {
@@ -55,7 +58,7 @@ public class Game implements IGame {
 
         private VirtualGame(String name, Genre genre, int rating) {
             this.rating = rating;
-            this.data = new Game(name, genre, Type.VIRTUAL);
+            this.data = new Game(name, genre, Game.Type.VIRTUAL);
         }
 
         public int getRating() {
