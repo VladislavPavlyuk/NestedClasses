@@ -101,7 +101,7 @@ public class GameConsole implements IGameConsole {
     }
 
     public void joystickPoweredOff(Gamepad gamepad) {
-        if (gamepad == firstGamepad && secondGamepad.isOn()) {
+        if (gamepad == firstGamepad) {
             firstGamepad = secondGamepad;
             secondGamepad = gamepad;
         }
