@@ -53,16 +53,23 @@ public class Game implements IGame {
     }
 
     public static class VirtualGame implements nested.interfaces.IVirtualGame {
-        private final int rating;
+        private int rating;
         private final Game data;
 
-        private VirtualGame(String name, Genre genre, int rating) {
-            this.rating = rating;
+        private VirtualGame(String name, Genre genre) {
+            this.rating = 0;
             this.data = new Game(name, genre, Game.Type.VIRTUAL);
         }
 
         public int getRating() {
             return rating;
+        }
+
+        public void setRating(int rating) {
+            if (rating < 0 || rating > 5) {
+                throw new IllegalArgumentException("Rating must be between 0 and 5");
+            }
+            this.rating = rating;
         }
 
         public Game getData() {
@@ -74,8 +81,14 @@ public class Game implements IGame {
         return new GameDisk(name, genre, description);
     }
 
+    public static VirtualGame getVirtualGame(String name, Genre genre) {
+        return new VirtualGame(name, genre);
+    }
+
     public static VirtualGame getVirtualGame(String name, Genre genre, int rating) {
-        return new VirtualGame(name, genre, rating);
+        VirtualGame game = new VirtualGame(name, genre);
+        game.setRating(rating);
+        return game;
     }
 }
 
