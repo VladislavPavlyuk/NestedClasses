@@ -3,11 +3,10 @@ package nested.models;
 import nested.enums.Brand;
 import nested.enums.Color;
 import nested.interfaces.IGameConsole;
-import nested.interfaces.Powered;
 
 public class GameConsole implements IGameConsole {
     private final Brand brand;
-    private final String model;
+    private String model;
     private final String serial;
     private Gamepad firstGamepad;
     private Gamepad secondGamepad;
@@ -17,10 +16,66 @@ public class GameConsole implements IGameConsole {
 
     public GameConsole(Brand brand, String serial) {
         this.brand = brand;
-        this.model = "Default Model"; // Can be changed to the desired value
         this.serial = serial;
-        this.firstGamepad = new Gamepad(brand, serial, 1, Color.BLACK);
-        this.secondGamepad = new Gamepad(brand, serial, 2, Color.WHITE);
+        this.model = "Default Model";
+        this.firstGamepad = new Gamepad(brand, 1);
+        this.secondGamepad = new Gamepad(brand, 2);
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getSerial() {
+        return serial;
+    }
+
+    public Gamepad getFirstGamepad() {
+        return firstGamepad;
+    }
+
+    public void setFirstGamepad(Gamepad firstGamepad) {
+        this.firstGamepad = firstGamepad;
+    }
+
+    public Gamepad getSecondGamepad() {
+        return secondGamepad;
+    }
+
+    public void setSecondGamepad(Gamepad secondGamepad) {
+        this.secondGamepad = secondGamepad;
+    }
+
+    public boolean isOn() {
+        return isOn;
+    }
+
+    public void setOn(boolean on) {
+        isOn = on;
+    }
+
+    public Game getActiveGame() {
+        return activeGame;
+    }
+
+    public void setActiveGame(Game activeGame) {
+        this.activeGame = activeGame;
+    }
+
+    public int getWaitingCounter() {
+        return waitingCounter;
+    }
+
+    public void setWaitingCounter(int waitingCounter) {
+        this.waitingCounter = waitingCounter;
     }
 
     @Override
@@ -95,11 +150,11 @@ public class GameConsole implements IGameConsole {
         private double chargeLevel;
         private boolean isOn;
 
-        public Gamepad(Brand brand, String consoleSerial, int connectedNumber, Color color) {
+        public Gamepad(Brand brand, int connectedNumber) {
             this.brand = brand;
-            this.consoleSerial = consoleSerial;
             this.connectedNumber = connectedNumber;
-            this.color = color;
+            this.consoleSerial = GameConsole.this.serial;
+            this.color = connectedNumber == 1 ? Color.BLACK : Color.WHITE;
             this.chargeLevel = 100.0;
         }
 
@@ -119,8 +174,16 @@ public class GameConsole implements IGameConsole {
             return isOn;
         }
 
+        public void setOn(boolean on) {
+            isOn = on;
+        }
+
         public double getChargeLevel() {
             return chargeLevel;
+        }
+
+        public void setChargeLevel(double chargeLevel) {
+            this.chargeLevel = chargeLevel;
         }
 
         public void decreaseBattery() {
