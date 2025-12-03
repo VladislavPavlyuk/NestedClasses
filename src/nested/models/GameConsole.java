@@ -3,6 +3,7 @@ package nested.models;
 import nested.enums.Brand;
 import nested.enums.Color;
 import nested.interfaces.IGameConsole;
+import nested.exceptions.InactivityException;
 
 public class GameConsole implements IGameConsole {
     private final Brand brand;
@@ -131,11 +132,11 @@ public class GameConsole implements IGameConsole {
 
     private void checkStatus() {
         if (!firstGamepad.isOn() && !secondGamepad.isOn()) {
-            System.out.println("Connect a gamepad");
+            System.out.println("Подключите джойстик");
             waitingCounter++;
             if (waitingCounter > 5) {
                 powerOff();
-                throw new RuntimeException("Console is shutting down due to inactivity");
+                throw new InactivityException("Приставка завершает работу из-за отсутствия активности");
             }
         } else {
             waitingCounter = 0;
