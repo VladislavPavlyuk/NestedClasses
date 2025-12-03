@@ -1,6 +1,8 @@
 package nested;
 
 import nested.models.Game;
+import nested.models.GameConsole;
+import nested.enums.Brand;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -37,6 +39,8 @@ public class PlayRoom {
                 return Integer.compare(a.getRating(), b.getRating());
             }
         });
+
+        GameConsole console = new GameConsole(Brand.Sony, "XC123QeWR");
         
     }
 }
