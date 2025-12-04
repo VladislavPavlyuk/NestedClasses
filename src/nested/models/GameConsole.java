@@ -4,6 +4,7 @@ import nested.enums.Brand;
 import nested.enums.Color;
 import nested.interfaces.IGameConsole;
 import nested.exceptions.InactivityException;
+import nested.interfaces.IGamepad;
 
 public class GameConsole implements IGameConsole {
     private final Brand brand;
@@ -143,7 +144,7 @@ public class GameConsole implements IGameConsole {
         }
     }
 
-    public class Gamepad implements nested.interfaces.IGamepad {
+    public class Gamepad implements IGamepad {
         private final Brand brand;
         private final String consoleSerial;
         private final int connectedNumber;

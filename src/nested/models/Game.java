@@ -1,6 +1,8 @@
 package nested.models;
 
 import nested.interfaces.IGame;
+import nested.interfaces.IGameDisk;
+import nested.interfaces.IVirtualGame;
 
 public class Game implements IGame {
 
@@ -34,7 +36,7 @@ public class Game implements IGame {
         return type;
     }
 
-    public static class GameDisk implements nested.interfaces.IGameDisk {
+    public static class GameDisk implements IGameDisk {
         private final String description;
         private final Game data;
 
@@ -52,7 +54,7 @@ public class Game implements IGame {
         }
     }
 
-    public static class VirtualGame implements nested.interfaces.IVirtualGame {
+    public static class VirtualGame implements IVirtualGame {
         private int rating;
         private final Game data;
 
