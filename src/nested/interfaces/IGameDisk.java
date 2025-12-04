@@ -7,3 +7,4 @@ public interface IGameDisk {
     Game getData();
 }
 
+

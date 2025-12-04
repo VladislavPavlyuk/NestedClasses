@@ -10,3 +10,4 @@ public interface IGameConsole extends Powered {
     void playGame();
 }
 
+
